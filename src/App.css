@@ -1,18 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
 .App {
   text-align: center;
 }
+.col {
+  background-color: #F9F9F9 !important;
+}
+.line {
+  padding: 5px 20px;
+  border-radius: 10px;
+}
+.line:hover {
+  background: '#DEE4E6';
+  box-shadow: 0px 4px 16px rgba(17,17,26,0.1), 0px 8px 32px rgba(17,17,26,0.05);
+  /* padding: 5px 10px;
+  border-radius: 10px; */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+}
+.img {
+  width: 50px;
+  border-radius: 50%;
+}
+.font-name {
+  font-size: 15px;
 }
 
+.myMessage{ 
+  color: #007bff;
+  color: #fff;
+}
+body {
+  font-family: 'Indie Flower', cursive;
+  background: #F5F5F5 !important;
+}
+.navbar-linked {
+  background-color: #293E4A !important;
+}
+.search:focus{
+  box-shadow: 0px 4px 16px rgba(17,17,26,0.1), 0px 8px 32px rgba(17,17,26,0.05);
+}
+.outline-none:focus {
+  outline: none !important;
+}
+.shadow {
+  box-shadow: 0px 1px 0px rgba(17,17,26,0.1), 0px 8px 24px rgba(17,17,26,0.1), 0px 16px 48px rgba(17,17,26,0.1);
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.btn-send {
+   background: transparent !important;
+   border: none !important;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

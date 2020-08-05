@@ -5,9 +5,11 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPaperPlane, faCircle , faDotCircle} from '@fortawesome/free-solid-svg-icons'
+import { faPaperPlane, faCircle , faDotCircle, faCog, faInfo, faPaperclip, faImage, faSmile} from '@fortawesome/free-solid-svg-icons'
 
-
+import useSound from 'use-sound';
+ 
+import boopSfx from './sounds/1111.wav';
 
 
 import io from 'socket.io-client';
@@ -20,7 +22,7 @@ let socket = io('https://striveschool.herokuapp.com/', options)
 
 function App() {
 
-  const [modal, setModal] = useState(true)
+  const [modal, setModal] = useState(false)
   const [username, setUsername] = useState('')
   const [tempUser, setTempUser] = useState('')
   const [messages, setMessages] = useState([])
@@ -54,9 +56,13 @@ function App() {
       to: to,
       text: text
     })
+    setMessages((messages => messages.concat({
+      from: username,
+      msg: text
+    })))
     setText('')
   }
-
+  const [play] = useSound(boopSfx);
 
   return (
     <div className="App">
@@ -189,33 +195,50 @@ function App() {
             top: '0',
             width: "100%",
             display: "flex",
+            justifyContent: 'space-between',
             padding: '20px 30px',
   
             borderBottom: '1px solid #CECFD2'
             
 
           }}>
-            
+             {/* {message.from} == 'Emmanuel' ?
+             return (
+             <img className='img mr-1' src='https://media-exp1.licdn.com/dms/image/C5603AQH2ZpNTBJ0m0w/profile-displayphoto-shrink_400_400/0?e=1601510400&v=beta&t=BVYN14q3UoE5y0p4TlilG_pff7mhlWL6Mx0xOgsAkJU'/>
+             ) : {message.from} == 'Ksysha' ?
+             return (
+             <img className='img mr-1' src='https://media-exp1.licdn.com/dms/image/C4E03AQEc2diO-PX-zw/profile-displayphoto-shrink_400_400/0?e=1601510400&v=beta&t=B2humeGo9ebxMdUGUE4aZ1XKTCrAcWGAdDKV76WE4mo'/>
+             )
+           } */}
+
        <h6>{to}
        { to ? <FontAwesomeIcon style={{marginLeft: '10px', color: 'green'}} icon={faCircle} /> : '' }
        </h6> 
+       <div>
+       <FontAwesomeIcon icon={faCog} style={{color: '#838383'}} />
+       <FontAwesomeIcon icon={faInfo} style={{color: '#838383', marginLeft: '20px'}} />
+       </div>
      </div>
-      <ul style={{  height:'93%', listStyle: "none", padding: "40px", marginTop: '20px'}}>
+      <ul style={{  height:'93%', listStyle: "none", padding: "40px", marginTop: '30px'}}>
 
       {messages.map(message => {
           return (
-            <li  style={{display: 'flex', justifyContent:'flex-start', alignItems: 'center', marginTop:'15px'}}>
-               {/* {message.from} == 'Emmanuel' ?
-              return (
-              <img className='img mr-1' src='https://media-exp1.licdn.com/dms/image/C5603AQH2ZpNTBJ0m0w/profile-displayphoto-shrink_400_400/0?e=1601510400&v=beta&t=BVYN14q3UoE5y0p4TlilG_pff7mhlWL6Mx0xOgsAkJU'/>
-              ) : {message.from} == 'Ksysha' ?
-              return (
-              <img className='img mr-1' src='https://media-exp1.licdn.com/dms/image/C4E03AQEc2diO-PX-zw/profile-displayphoto-shrink_400_400/0?e=1601510400&v=beta&t=B2humeGo9ebxMdUGUE4aZ1XKTCrAcWGAdDKV76WE4mo'/>
-              )
-            } */}
-               <small style='shadow' style={{ backgroundColor : '#F5F5F5', padding: '10px 20px', width: '30%', borderRadius: '20px', color: '#000'}}> {message.msg}</small>
-               <strong className='text-muted ml-3' style={{fontSize: '10px'}}>  {message.from}</strong> 
-            </li>
+            message.from === username ? (
+              <li  style={{display: 'flex', justifyContent:'flex-end', alignItems: 'center', marginTop:'15px'}}>
+             
+              <small style='shadow' style={{ backgroundColor : '#4b7efc', padding: '10px 20px', width: '30%', borderRadius: '20px', color: '#fff'}}> {message.msg}</small>
+              <strong className='text-muted ml-3' style={{fontSize: '10px'}}>  {message.from}</strong>
+           </li>
+            ) :
+            (
+              <li  style={{display: 'flex', justifyContent:'flex-start', alignItems: 'center', marginTop:'15px'}}>
+             
+              <small style='shadow' style={{ backgroundColor : '#F5F5F5', padding: '10px 20px', width: '30%', borderRadius: '20px', color: '#000'}}> {message.msg}</small>
+              <strong className='text-muted ml-3' style={{fontSize: '10px'}}>  {message.from}</strong>
+           </li>
+            )
+          
+           
    )
 
   })}
@@ -252,19 +275,39 @@ function App() {
             type='text' 
             value={text}
             onChange={(e) => setText(e.currentTarget.value)}
-            style={{ flex: "1 0 0",  padding: '15px 20px', borderRadius: '50px', border: 'none', background: '#DEE4E6'}}
+            style={{position: 'relative', flex: "1 0 0",  padding: '15px 20px', borderRadius: '50px', border: 'none', background: '#DEE4E6'}}
            className='outline-none search'
             placeholder='Your message...' 
           />
+          <div style={{position:'absolute', right: '120px'}}>
+          <FontAwesomeIcon icon={faSmile} style={{ marginRight: '10px', color: '#838383' }}/>
+          <FontAwesomeIcon icon={faImage} style={{ marginRight: '10px', color: '#838383' }}/>
+          <FontAwesomeIcon icon={faPaperclip} style={{ color: '#838383' }} />
+          </div> 
           <Button type="send" className="btn-send outline-none" >
-             <FontAwesomeIcon icon={faPaperPlane}  onClick={send} style={{color: '#fff', fontSize: '35px', marginLeft: '5px', backgroundColor: '#4b7efc', padding: '10px', borderRadius: '50%' }}/>
+             <FontAwesomeIcon icon={faPaperPlane}  onClick={send} onClick={play} style={{color: '#fff', fontSize: '35px', marginLeft: '5px', backgroundColor: '#4b7efc', padding: '10px', borderRadius: '50%' }}/>
           </Button>
         </form>
         </div>
 
         
         </div>
-        <div className='col col-lg-2 col-sm-12' style={{padding: '5px', height:'90vh', margin: '3px', border: '1px solid #CECFD2'}}>
+        <div className='col col-lg-2 col-sm-12' style={{padding: '20px', height:'90vh', margin: '3px', border: '1px solid #CECFD2', display: 'flex', flexDirection:'column', justifyContent: 'space-between'}}>
+        <img style={{width: '100%', border: '2px solid #CECFD2' }} src='https://static-exp1.licdn.com/scds/common/u/images/promo/ads/li_evergreen_jobs_ad_300x250_v1.jpg'/>
+          <ul className='list-unstyled' style={{color: 'grey', textAlign: 'left', fontSize: '12px' }}>
+            <li>About</li>
+            <li>Help Center </li>
+            <li>Privacy & Terms</li>
+            <li>Accessibility</li>
+            <li>Services</li>
+            <li>Get the LinkedIn app</li>
+            <li>More...</li>
+            <li className='mt-2'>
+            <img style={{width:'50px'}} src='https://logos-world.net/wp-content/uploads/2020/04/Linkedin-Logo-2003%E2%80%932011.png'/>
+            <small> LinkedIn Corporation © 2020</small>
+          </li>
+          </ul>
+        
        </div>
         </div>
         {/* <Row>
@@ -276,24 +319,38 @@ function App() {
     
 
 
-      <Modal show={modal} onHide={handleClose}>
+      <Modal show={modal} onHide={handleClose} style={{backgroundColor : '#000'}} >
+        <div className='back-modal' style={{ padding: '40px', height: '90vh',  display: 'flex', justifyContent: 'space-between', flexDirection:'column'}}>
         <Modal.Header>
-          <Modal.Title>Welcome !</Modal.Title>
+          
+          <Modal.Title>
+          <Navbar.Brand href="#home" style={{color: '#fff'}}>
+            <img
+              alt="brand"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Linkedin.svg/600px-Linkedin.svg.png"
+              width="30"
+              height="30"
+              style={{marginRight: '10px'}}
+             
+            />
+          LinkedIn Chat
+    </Navbar.Brand>
+         </Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <Form.Group>
+          <label style={{fontSize: '12px', color: '#fff'}}>Enter your name</label>
               {/* <Form.Label>Hey, there !</Form.Label> */}
-              <Form.Control type="text" placeholder="Enter your name" value={tempUser} onChange={(e) => setTempUser(e.currentTarget.value)} />
+              <Form.Control className='modal-input text-white' type="text" value={tempUser} onChange={(e) => setTempUser(e.currentTarget.value)} />
             </Form.Group>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={saveUser}>
-            Save Changes
+          
+          <Button variant="primary" onClick={saveUser} style={{border: '1px solid #fff', background: 'none'}}>
+            Start messaging
           </Button>
         </Modal.Footer>
+        </div>
       </Modal>
 
     </div>

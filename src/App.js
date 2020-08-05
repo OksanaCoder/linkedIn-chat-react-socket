@@ -6,7 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane, faCircle , faDotCircle, faCog, faInfo, faPaperclip, faImage, faSmile} from '@fortawesome/free-solid-svg-icons'
-
+import 'emoji-mart/css/emoji-mart.css'
+import { Picker } from 'emoji-mart'
 import useSound from 'use-sound';
  
 import boopSfx from './sounds/1111.wav';
@@ -21,13 +22,20 @@ let socket = io('https://striveschool.herokuapp.com/', options)
 
 
 function App() {
-
+  const customIcons = {
+    categories: {
+      recent: () => <img src='https://github.githubassets.com/images/icons/emoji/octocat.png' />,
+      foods: () => <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l6.084 24H8L1.916 0zM21 5h-4l-1-4H4l3 12h3l1 4h13L21 5zM6.563 3h7.875l2 8H8.563l-2-8zm8.832 10l-2.856 1.904L12.063 13h3.332zM19 13l-1.5-6h1.938l2 8H16l3-2z"/></svg>,
+      people: () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M3 2l10 6-10 6z"></path></svg>
+    }
+  }
   const [modal, setModal] = useState(false)
   const [username, setUsername] = useState('')
   const [tempUser, setTempUser] = useState('')
   const [messages, setMessages] = useState([])
   const [to, setTo] = useState('')
   const [text, setText] = useState('')
+  const [showPicker, setShowPicker] = useState(false)
 
   useEffect(() => {
     console.log('smth happened')
@@ -187,7 +195,7 @@ function App() {
 
 
 
-      <div className='col col-lg-6 col-sm-12' style={{ position: 'relative', height:'90vh', margin: '3px', border: '1px solid #CECFD2'}}>
+      <div className='col col-lg-6 col-sm-12' style={{background: '#F5F4F7', position: 'relative', height:'90vh', margin: '3px', border: '1px solid #CECFD2'}}>
 
      <div style={{
             margin: '0 auto',
@@ -197,7 +205,7 @@ function App() {
             display: "flex",
             justifyContent: 'space-between',
             padding: '20px 30px',
-  
+            background: '#fff',
             borderBottom: '1px solid #CECFD2'
             
 
@@ -219,7 +227,7 @@ function App() {
        <FontAwesomeIcon icon={faInfo} style={{color: '#838383', marginLeft: '20px'}} />
        </div>
      </div>
-      <ul style={{  height:'93%', listStyle: "none", padding: "40px", marginTop: '30px'}}>
+      <ul style={{background: '#F5F4F7',  height:'88%', listStyle: "none", padding: "70px", borderBottom: '1px solid #CECFD2'} }>
 
       {messages.map(message => {
           return (
@@ -276,11 +284,15 @@ function App() {
             value={text}
             onChange={(e) => setText(e.currentTarget.value)}
             style={{position: 'relative', flex: "1 0 0",  padding: '15px 20px', borderRadius: '50px', border: 'none', background: '#DEE4E6'}}
-           className='outline-none search'
+           className='outline-none'
             placeholder='Your message...' 
           />
           <div style={{position:'absolute', right: '120px'}}>
-          <FontAwesomeIcon icon={faSmile} style={{ marginRight: '10px', color: '#838383' }}/>
+
+          {showPicker && <Picker icons={customIcons} /> }
+      
+       
+          <FontAwesomeIcon onClick={() => setShowPicker(!showPicker)} icon={faSmile} style={{ marginRight: '10px', color: '#838383' }}/>
           <FontAwesomeIcon icon={faImage} style={{ marginRight: '10px', color: '#838383' }}/>
           <FontAwesomeIcon icon={faPaperclip} style={{ color: '#838383' }} />
           </div> 

@@ -29,7 +29,7 @@ function App() {
       people: () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M3 2l10 6-10 6z"></path></svg>
     }
   }
-  const [modal, setModal] = useState(false)
+  const [modal, setModal] = useState(true)
   const [username, setUsername] = useState('')
   const [tempUser, setTempUser] = useState('')
   const [messages, setMessages] = useState([])
@@ -108,81 +108,119 @@ function App() {
                  onChange={(e) => setTo(e.currentTarget.value)} 
                  placeholder='Search...' />
      </li>
-     <li className='line' style={{display: 'flex', justifyContent: 'space-between', alignItems:'center', width: '80%', margin: '40px auto 20px'}}>
-      <div>
-       <img className='img mr-4' src='https://media-exp1.licdn.com/dms/image/C5603AQH2ZpNTBJ0m0w/profile-displayphoto-shrink_400_400/0?e=1601510400&v=beta&t=BVYN14q3UoE5y0p4TlilG_pff7mhlWL6Mx0xOgsAkJU'/>
-      
-            <small className='font-name'>Emmanuel</small>
 
-  
+
+     <li className='line' style={{display: 'flex', justifyContent: 'space-between', alignItems:'center', width: '80%', margin: '40px auto 20px'}}>
+      <div style={{display: 'flex', justifyContent: 'flex-start', alignItems:'center', textAlign: 'left'}}>
+       <img className='img mr-4' src='https://media-exp1.licdn.com/dms/image/C5603AQH2ZpNTBJ0m0w/profile-displayphoto-shrink_400_400/0?e=1601510400&v=beta&t=BVYN14q3UoE5y0p4TlilG_pff7mhlWL6Mx0xOgsAkJU'/>
+      <div style={{display: 'flex', flexDirection: 'column'}}>
+            <small className='font-name'>Emmanuel</small>
+          <small  style={{letterSpacing: '2px'}}>Online</small>
+            </div>
        </div>
        <FontAwesomeIcon style={{marginLeft: '10px', color: 'green'}} icon={faCircle} />
      </li>
 
      <li className='line' style={{display: 'flex', justifyContent: 'space-between', alignItems:'center', width: '80%', margin: '20px auto'}}>
-      <div>
+      <div style={{display: 'flex', justifyContent: 'flex-start', alignItems:'center', textAlign: 'left'}}>
       <img className='img mr-4' src='     https://media-exp1.licdn.com/dms/image/C4E03AQHbwk5fnwxJzg/profile-displayphoto-shrink_400_400/0?e=1601510400&v=beta&t=cYXFtdZCLXu2TSSvgywqo1KffeRu9ZWFLs5ToOIC9B4'/>
+      <div style={{display: 'flex', flexDirection: 'column'}}>
+
        <small className='font-name'>Klevin</small>
+       <small  style={{letterSpacing: '2px'}}>Online</small>
+       </div>
        </div>
        <FontAwesomeIcon style={{marginLeft: '10px', color: 'green'}} icon={faCircle} />
      </li>
      <li  className='line' style={{display: 'flex', justifyContent: 'space-between', alignItems:'center', width: '80%', margin: '20px auto'}}>
-     <div>
+     <div style={{display: 'flex', justifyContent: 'flex-start', alignItems:'center', textAlign: 'left'}}>
        <img className='img mr-4' src='https://media-exp1.licdn.com/dms/image/C5603AQEhXHiVnQYhfA/profile-displayphoto-shrink_400_400/0?e=1601510400&v=beta&t=9b9I4QpWGD7L_dcdjRP6hnCXaC8SZ7uoyErPD-umc8w'/>
+       <div style={{display: 'flex', flexDirection: 'column'}}>
+
        <small className='font-name'>Arbiona</small>
+       <small  style={{letterSpacing: '2px'}}>Offline</small>
+       </div>
        </div>
        <FontAwesomeIcon style={{marginLeft: '10px', color: 'green'}} icon={faDotCircle} />
      
      </li>
      <li className='line' style={{display: 'flex', justifyContent: 'space-between', alignItems:'center', width: '80%', margin: '20px auto'}}>
-       <div>
+       <div style={{display: 'flex', justifyContent: 'flex-start', alignItems:'center', textAlign: 'left'}}>
        <img className='img mr-4' src='https://media-exp1.licdn.com/dms/image/C4E03AQFv0SNcfHQH8A/profile-displayphoto-shrink_400_400/0?e=1601510400&v=beta&t=ikZm7WVzD8N6pp_Mn6z3dbkZDWPFYAW4xxCvulT4NW4'/>
+       <div style={{display: 'flex', flexDirection: 'column'}}>
+
        <small className='font-name'>Ubeyt</small>
+       <small  style={{letterSpacing: '2px'}}>Online</small>
+       </div>
        </div>
        <FontAwesomeIcon style={{marginLeft: '10px', color: 'green'}} icon={faCircle} />
      </li>
      <li className='line' style={{display: 'flex', justifyContent: 'space-between', alignItems:'center', width: '80%', margin: '20px auto'}}>
-     <div>
+     <div style={{display: 'flex', justifyContent: 'flex-start', alignItems:'center', textAlign: 'left'}}>
        <img className='img mr-4' src='https://media-exp1.licdn.com/dms/image/C5603AQE6n7Iem46vpg/profile-displayphoto-shrink_400_400/0?e=1601510400&v=beta&t=il7Htnldai05gXxe1mFIAAnQfRbG2B05RuNqXZ5RvZ4'/>
+       <div style={{display: 'flex', flexDirection: 'column'}}>
+
        <small className='font-name'>Ervins</small>
+       <small  style={{letterSpacing: '2px'}}>Offline</small>
+       </div>
        </div> 
        <FontAwesomeIcon style={{marginLeft: '10px', color: 'green'}} icon={faDotCircle} />
    
      </li>
      <li className='line' style={{display: 'flex', justifyContent: 'space-between', alignItems:'center', width: '80%', margin: '20px auto'}}>
-     <div>
+     <div style={{display: 'flex', justifyContent: 'flex-start', alignItems:'center', textAlign: 'left'}}>
        <img className='img mr-4' src='https://media-exp1.licdn.com/dms/image/C4D03AQFSzZk5YOd2lg/profile-displayphoto-shrink_400_400/0?e=1601510400&v=beta&t=POCaCd3_ddOtHZ_p23-t7LVLb8ZlngJbcrFiuOKGYaw'/>
+       <div style={{display: 'flex', flexDirection: 'column'}}>
+
        <small className='font-name'>Nathalie</small>
+       <small  style={{letterSpacing: '2px'}}>Offline</small>
+       </div>
        </div>
        <FontAwesomeIcon style={{marginLeft: '10px', color: 'green'}} icon={faDotCircle} />
      </li>
      <li className='line' style={{display: 'flex', justifyContent: 'space-between', alignItems:'center', width: '80%', margin: '20px auto'}}>
-     <div>
+     <div style={{display: 'flex', justifyContent: 'flex-start', alignItems:'center', textAlign: 'left'}}>
        <img className='img mr-4' src='https://media-exp1.licdn.com/dms/image/C5603AQEmKU0TgsZoSA/profile-displayphoto-shrink_400_400/0?e=1602115200&v=beta&t=2mofxHBpy9KbxQKHivhcKbQcKktfyY6a6OUPXPPXom0'/>
+       <div style={{display: 'flex', flexDirection: 'column'}}>
+
        <small className='font-name'>Diego</small>
+       <small  style={{letterSpacing: '2px'}}>Offline</small>
+       </div>
        </div>
        <FontAwesomeIcon style={{marginLeft: '10px', color: 'green'}} icon={faDotCircle} />
     
      </li>
      <li className='line' style={{display: 'flex', justifyContent: 'space-between', alignItems:'center', width: '80%', margin: '20px auto'}}>
-       <div>
+       <div style={{display: 'flex', justifyContent: 'flex-start', alignItems:'center', textAlign: 'left'}}>
        <img className='img mr-4' src='https://media-exp1.licdn.com/dms/image/C4E03AQF2F_Kj1ThAqA/profile-displayphoto-shrink_400_400/0?e=1601510400&v=beta&t=TanyyO1QsDUcK0ugOZsQFjBLWYPngCqwvhVEiDHFADU
 '/>
+      <div style={{display: 'flex', flexDirection: 'column'}}>
+
        <small className='font-name'>Marigona</small>
+       <small  style={{letterSpacing: '2px'}}>Online</small>
+       </div>
        </div>
        <FontAwesomeIcon style={{marginLeft: '10px', color: 'green'}} icon={faCircle} />
      </li>
      <li className='line' style={{display: 'flex', justifyContent: 'space-between', alignItems:'center', width: '80%', margin: '20px auto'}}>
-      <div>
+      <div style={{display: 'flex', justifyContent: 'flex-start', alignItems:'center', textAlign: 'left'}}>
        <img className='img mr-4' src='https://media-exp1.licdn.com/dms/image/C4D03AQFWqJ4Tsv-V_g/profile-displayphoto-shrink_400_400/0?e=1601510400&v=beta&t=iON6M7NKjVWzJHta8sQw2PXykR6oWMVjyDRY6Vf1Zyo'/>
+       <div style={{display: 'flex', flexDirection: 'column'}}>
+
        <small className='font-name'>Alina</small>
+       <small  style={{letterSpacing: '2px'}}>Online</small>
+       </div>
        </div>
        <FontAwesomeIcon style={{marginLeft: '10px', color: 'green'}} icon={faCircle} />
      </li>
      <li className='line' style={{display: 'flex', justifyContent: 'space-between', alignItems:'center', width: '80%', margin: '20px auto'}}>
-     <div>
+     <div style={{display: 'flex', justifyContent: 'flex-start', alignItems:'center', textAlign: 'left'}}>
        <img className='img mr-4' src=' https://ca.slack-edge.com/TJNQP8XCG-U010MP9GNAX-0af0ddad44ba-512'/>
+       <div style={{display: 'flex', flexDirection: 'column'}}>
+
        <small className='font-name'>Detart</small>
+       <small  style={{letterSpacing: '2px'}}>Offline</small>
+       </div>
        </div>
        <FontAwesomeIcon style={{marginLeft: '10px', color: 'green'}} icon={faDotCircle} />
        
@@ -235,13 +273,13 @@ function App() {
               <li  style={{display: 'flex', justifyContent:'flex-end', alignItems: 'center', marginTop:'15px'}}>
              
               <small style='shadow' style={{ backgroundColor : '#4b7efc', padding: '10px 20px', width: '30%', borderRadius: '20px', color: '#fff'}}> {message.msg}</small>
-              <strong className='text-muted ml-3' style={{fontSize: '10px'}}>  {message.from}</strong>
+              <strong className='text-muted ml-3' style={{fontSize: '10px'}}> me </strong>
            </li>
             ) :
             (
               <li  style={{display: 'flex', justifyContent:'flex-start', alignItems: 'center', marginTop:'15px'}}>
              
-              <small style='shadow' style={{ backgroundColor : '#F5F5F5', padding: '10px 20px', width: '30%', borderRadius: '20px', color: '#000'}}> {message.msg}</small>
+              <small style='shadow' style={{ backgroundColor : '#fff', padding: '10px 20px', width: '30%', borderRadius: '20px', color: '#000'}}> {message.msg}</small>
               <strong className='text-muted ml-3' style={{fontSize: '10px'}}>  {message.from}</strong>
            </li>
             )

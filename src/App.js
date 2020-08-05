@@ -289,7 +289,7 @@ function App() {
           />
           <div style={{position:'absolute', right: '120px'}}>
 
-          {showPicker && <Picker icons={customIcons} /> }
+          {showPicker && <Picker icons={customIcons} style={{bottom:' 40px', position: 'absolute', right:'100px'}} onClick={(emoji) => {setText(emoji.native)} }/> }
       
        
           <FontAwesomeIcon onClick={() => setShowPicker(!showPicker)} icon={faSmile} style={{ marginRight: '10px', color: '#838383' }}/>
